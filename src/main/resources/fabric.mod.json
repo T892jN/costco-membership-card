@@ -20,6 +20,9 @@
 		],
 		"fabric-datagen": [
 			"name.modid.CostcoMembershipCardDataGenerator"
+		],
+		"client": [
+			"name.modid.CostcoMembershipCardClient"
 		]
 	},
 	"mixins": [
