@@ -1,0 +1,6 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "costco-membership-card:item/costco_membership_card"
+  }
+}

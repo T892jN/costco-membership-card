@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "costco-membership-card:item/costco_membership_card"
+  }
+}
