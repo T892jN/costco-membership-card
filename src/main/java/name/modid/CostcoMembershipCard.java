@@ -8,6 +8,7 @@ import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 
 public class CostcoMembershipCard implements ModInitializer {
 	public static final String MOD_ID = "costco-membership-card";
@@ -20,7 +21,15 @@ public class CostcoMembershipCard implements ModInitializer {
 		ModEntities.registerModEntities();
 		CostcoChunkHandler.register();
 
+		ServerTickEvents.END_WORLD_TICK.register(
+				world -> {
 
+					CostcoWorldState state =
+							CostcoWorldStateManager.get(world);
+
+					state.processQueue(world);
+				}
+		);
 
 		FabricDefaultAttributeRegistry.register(
 				ModEntities.COSTCO_EMPLOYEE,

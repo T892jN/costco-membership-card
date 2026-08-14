@@ -10,22 +10,17 @@ public class CostcoChunkHandler {
 
         ServerChunkEvents.CHUNK_LOAD.register(
                 (ServerWorld world, WorldChunk chunk) -> {
-    
+
                     CostcoWorldState state =
                             CostcoWorldStateManager.get(world);
-    
-                    System.out.println(
-                            "[COSTCO TEST] Chunk loaded: " + chunk.getPos()
-                    );
-    
-                    System.out.println(
-                            "[COSTCO TEST] barriersRemoved = "
-                                    + state.barriersRemoved
-                    );
-    
-                    // If the membership has been accepted,
-                    // remove barriers from this newly loaded chunk.
-                    state.checkChunk(world, chunk);
+
+                    if (state.barriersRemoved) {
+
+                        state.checkChunk(
+                                world,
+                                chunk
+                        );
+                    }
                 }
         );
     }
